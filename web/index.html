@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>실루엣 색면</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+  <div class="left">
+    <div id="stage"><canvas id="out"></canvas></div>
+    <div class="bar">
+      <button id="rec">녹화 시작</button>
+      <button id="snap">사진 저장</button>
+      <button id="only">색면만 보기</button>
+      <span class="fps" id="fps"></span>
+    </div>
+  </div>
+
+  <aside>
+    <div class="card">
+      <h2>무엇을 보나</h2>
+      <select id="source">
+        <option value="camera">카메라</option>
+        <option value="sim">가짜 사람 하나</option>
+        <option value="sim2">가짜 사람 둘</option>
+        <option value="file">영상 파일 열기…</option>
+      </select>
+      <input type="file" id="file" accept="video/*" hidden />
+      <div id="status">시작하는 중</div>
+    </div>
+
+    <div class="card">
+      <h2>감지한 것 (붉은 곳이 몸으로 본 자리)</h2>
+      <canvas id="preview" width="256" height="192"></canvas>
+    </div>
+
+    <div class="card">
+      <h2>실루엣에서 뽑은 숫자 → 규칙(web/rule.js) → 색면</h2>
+      <div id="features"></div>
+      <div id="shape"></div>
+    </div>
+
+    <div class="card">
+      <h2>조절</h2>
+      <div id="params"></div>
+      <button id="reset" style="margin-top:6px">처음 값으로</button>
+    </div>
+
+    <div class="card keys">
+      H 조절판 숨기기 · F 전체 화면 · R 녹화 · S 사진<br />
+      조절한 값은 이 브라우저에 남습니다.
+    </div>
+  </aside>
+</div>
+<video id="video" playsinline muted></video>
+<script type="module" src="app.js"></script>
+</body>
+</html>
